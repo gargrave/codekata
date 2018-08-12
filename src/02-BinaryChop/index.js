@@ -13,11 +13,41 @@ function chopRecursive(value, arr, lo = 0, hi = arr.length - 1) {
   if (midValue === value) {
     return offsetMid;
   } else if (midValue > value) {
-    return chop(value, arr, lo, mid - 1);
+    return chopRecursive(value, arr, lo, mid - 1);
   } else if (midValue < value) {
-    return chop(value, arr, offsetMid + 1, hi);
+    return chopRecursive(value, arr, offsetMid + 1, hi);
   }
 
+  return -1;
+}
+
+function chopIterative(value, arr) {
+  if (!arr.length) {
+    return -1;
+  }
+
+  let len = arr.length;
+  let lo = 0;
+  let hi = len - 1;
+
+  while (len) {
+    if (len === 1) {
+      return arr[lo] === value ? lo : -1;
+    }
+
+    const mid = lo + (Math.floor(len / 2));
+    const val = arr[mid];
+
+    if (val === value) {
+      return mid;
+    } else if (val > value) {
+      hi = Math.floor((len - 1) / 2);
+    } else if (val < value) {
+      lo += Math.floor(len / 2);
+    }
+
+    len = hi - lo + 1;
+  }
   return -1;
 }
 
@@ -25,7 +55,7 @@ function chopRecursive(value, arr, lo = 0, hi = arr.length - 1) {
 // = TESTS
 // ==============================
 
-const chop = chopRecursive;
+const chop = chopIterative;
 
 assert.equal(-1, chop(3, []));
 assert.equal(-1, chop(3, [1]));
