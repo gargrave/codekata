@@ -3,7 +3,7 @@ const assert = require('assert');
 const {
   chopIterative,
   chopRecursive,
-} = require('./index');
+} = require('./BinaryChop');
 
 const chop = chopIterative;
 
@@ -39,3 +39,5 @@ assert.equal(0, chop(1, arr9));
 assert.equal(1, chop(2, arr9));
 assert.equal(7, chop(18, arr9));
 assert.equal(8, chop(41, arr9));
+
+console.log('All tests pass!');
