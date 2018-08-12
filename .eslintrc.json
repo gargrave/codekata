@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "no-debugger": "warn",
+    "no-else-return": "off",
+    "no-unused-vars": "warn",
+    "quotes": ["warn", "single"],
+    "semi": "warn"
+  }
+}

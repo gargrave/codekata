@@ -1,0 +1,13 @@
+{
+  "name": "codekata",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gabe Hargrave <gkhargrave@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  }
+}
