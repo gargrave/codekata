@@ -16,6 +16,7 @@
   "rules": {
     "no-debugger": "warn",
     "no-else-return": "off",
+    "no-param-reassign": "off",
     "no-unused-vars": "warn",
     "quotes": ["warn", "single"],
     "semi": "warn"
