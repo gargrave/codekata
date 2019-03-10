@@ -34,60 +34,60 @@
 */
 
 function chopRecursive(value, arr, lo = 0, hi = arr.length - 1) {
-  const len = hi - lo + 1;
+  const len = hi - lo + 1
   if (len <= 1) {
-    return arr[lo] === value ? lo : -1;
+    return arr[lo] === value ? lo : -1
   }
 
-  const mid = Math.floor(len / 2);
-  const offsetMid = lo + mid;
-  const midValue = arr[offsetMid];
+  const mid = Math.floor(len / 2)
+  const offsetMid = lo + mid
+  const midValue = arr[offsetMid]
 
   if (midValue === value) {
-    return offsetMid;
+    return offsetMid
   } else if (midValue > value) {
-    return chopRecursive(value, arr, lo, mid - 1);
+    return chopRecursive(value, arr, lo, mid - 1)
   } else if (midValue < value) {
-    return chopRecursive(value, arr, offsetMid + 1, hi);
+    return chopRecursive(value, arr, offsetMid + 1, hi)
   }
 
-  return -1;
+  return -1
 }
 
 function chopIterative(value, arr) {
   if (!arr.length) {
-    return -1;
+    return -1
   }
 
-  let len = arr.length;
-  let lo = 0;
-  let hi = len - 1;
+  let len = arr.length
+  let lo = 0
+  let hi = len - 1
 
   while (len) {
     if (len === 1) {
-      return arr[lo] === value ? lo : -1;
+      return arr[lo] === value ? lo : -1
     }
 
-    const mid = lo + (Math.floor(len / 2));
-    const val = arr[mid];
+    const mid = lo + Math.floor(len / 2)
+    const val = arr[mid]
 
     if (val === value) {
-      return mid;
+      return mid
     } else if (val > value) {
-      hi = Math.floor((len - 1) / 2);
+      hi = Math.floor((len - 1) / 2)
     } else if (val < value) {
-      lo += Math.floor(len / 2);
+      lo += Math.floor(len / 2)
     }
 
-    len = hi - lo + 1;
+    len = hi - lo + 1
   }
-  return -1;
+  return -1
 }
 
 module.exports = {
   chopIterative,
   chopRecursive,
-};
+}
 
 /*
 ==============================
