@@ -1,5 +1,8 @@
 const Cart = {
-  scan(item, previousCart = []) {
+  add(previousCart = [], item = '') {
+    if (!item) {
+      return previousCart
+    }
     return previousCart.concat(item)
   },
 }

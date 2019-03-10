@@ -4,7 +4,7 @@ const { Cart, Checkout } = require('./checkout.fp')
 const { defaultPricingRules } = require('./rules')
 
 function price(goods) {
-  const cart = goods.split('').reduce((acc, item) => Cart.scan(item, acc), [])
+  const cart = goods.split('').reduce((acc, item) => Cart.add(acc, item), [])
   return Checkout.total(cart, defaultPricingRules)
 }
 
@@ -30,19 +30,19 @@ function testIncremental() {
   let cart = []
   assert.equal(0, Checkout.total(cart, defaultPricingRules))
 
-  cart = Cart.scan('A', cart)
+  cart = Cart.add(cart, 'A')
   assert.equal(50, Checkout.total(cart, defaultPricingRules))
 
-  cart = Cart.scan('B', cart)
+  cart = Cart.add(cart, 'B')
   assert.equal(80, Checkout.total(cart, defaultPricingRules))
 
-  cart = Cart.scan('A', cart)
+  cart = Cart.add(cart, 'A')
   assert.equal(130, Checkout.total(cart, defaultPricingRules))
 
-  cart = Cart.scan('A', cart)
+  cart = Cart.add(cart, 'A')
   assert.equal(160, Checkout.total(cart, defaultPricingRules))
 
-  cart = Cart.scan('B', cart)
+  cart = Cart.add(cart, 'B')
   assert.equal(175, Checkout.total(cart, defaultPricingRules))
 }
 
